@@ -25,7 +25,7 @@ const Navbar = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-background/60 backdrop-blur-xl border-b border-border/50" : ""}`}>
       <div className="section-container flex items-center justify-between h-20">
         <a href="#" className="text-xl font-bold text-foreground tracking-tight">
-          MH<span className="text-primary">.</span>
+          <img src="/logo.svg" alt="MH" className="w-10 h-10" />
         </a>
         <div className="hidden md:flex items-center gap-8">
           {links.map((l) => (
