@@ -1,3 +1,6 @@
+[phases.setup]
+cmds = ["node@22"]
+
 [phases.install]
 cmds = ["npm install --legacy-peer-deps"]
 
