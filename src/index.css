@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 2%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 0 85% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 80%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 55%;
+
+    --accent: 0 85% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 0 85% 55%;
+
+    --radius: 0.75rem;
+
+    --glow-primary: 0 85% 55%;
+    --glow-soft: 0 0 40px hsla(0, 85%, 55%, 0.15);
+    --glow-strong: 0 0 80px hsla(0, 85%, 55%, 0.25);
+
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 80%;
+    --sidebar-primary: 0 85% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 14%;
+    --sidebar-ring: 0 85% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background: hsla(0, 85%, 55%, 0.3);
+    color: hsl(0, 0%, 100%);
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-6xl mx-auto px-6 md:px-8;
+  }
+
+  .section-gap {
+    @apply py-24 md:py-32;
+  }
+
+  .heading-display {
+    @apply text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none;
+  }
+
+  .heading-section {
+    @apply text-sm font-medium tracking-[0.3em] uppercase text-muted-foreground mb-2;
+  }
+
+  .heading-large {
+    @apply text-3xl md:text-5xl font-bold tracking-tight;
+  }
+
+  .body-text {
+    @apply text-base md:text-lg leading-relaxed text-muted-foreground;
+  }
+
+  .mono-text {
+    font-family: 'JetBrains Mono', monospace;
+    @apply text-xs font-medium tracking-wider;
+  }
+
+  .glow-text {
+    text-shadow: 0 0 40px hsla(0, 85%, 55%, 0.4), 0 0 80px hsla(0, 85%, 55%, 0.15);
+  }
+
+  .glow-box {
+    box-shadow: 0 0 40px hsla(0, 85%, 55%, 0.12), 0 0 80px hsla(0, 85%, 55%, 0.06);
+  }
+
+  .glow-border {
+    @apply border border-primary/20;
+    box-shadow: inset 0 0 20px hsla(0, 85%, 55%, 0.05), 0 0 20px hsla(0, 85%, 55%, 0.08);
+  }
+
+  .card-dark {
+    @apply bg-card rounded-2xl p-6 md:p-8 border border-border/50 transition-all duration-500;
+  }
+
+  .card-dark:hover {
+    @apply border-primary/30;
+    box-shadow: 0 0 40px hsla(0, 85%, 55%, 0.1);
+  }
+
+  .badge-tech {
+    @apply inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium border border-border/50 text-muted-foreground transition-all duration-300;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .badge-tech:hover {
+    @apply border-primary/40 text-primary;
+  }
+
+  .btn-glow {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-sm tracking-wide transition-all duration-300;
+    box-shadow: 0 0 20px hsla(0, 85%, 55%, 0.3), 0 0 60px hsla(0, 85%, 55%, 0.1);
+  }
+
+  .btn-glow:hover {
+    box-shadow: 0 0 30px hsla(0, 85%, 55%, 0.5), 0 0 80px hsla(0, 85%, 55%, 0.2);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-border text-foreground font-semibold text-sm tracking-wide transition-all duration-300;
+  }
+
+  .btn-ghost:hover {
+    @apply border-primary/50 text-primary;
+  }
+
+  .nav-link {
+    @apply text-sm text-muted-foreground hover:text-foreground transition-all duration-300 relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .marquee-track {
+    animation: marquee 30s linear infinite;
+  }
+
+  .counter-text {
+    @apply text-6xl md:text-8xl font-bold tracking-tighter;
+    -webkit-text-stroke: 1px hsl(0, 85%, 55%);
+    color: transparent;
+  }
+
+  .counter-text-filled {
+    @apply text-6xl md:text-8xl font-bold tracking-tighter text-primary;
+  }
+
+  .divider-glow {
+    @apply h-px w-full;
+    background: linear-gradient(90deg, transparent, hsl(0, 85%, 55%), transparent);
+    opacity: 0.3;
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
